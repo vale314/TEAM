@@ -1,0 +1,4 @@
+{
+  "mongoURI": "mongodb+srv://vale123:1234@game-4hhv9.mongodb.net/test?retryWrites=true&w=majority",
+  "jwtSecret": "secret"
+}
