@@ -17,7 +17,7 @@ const ListItem = (props) => {
 
 const MealDetailScreen = (props) => {
   const availableMeals = useSelector((state) => state.meals.meals);
-  const mealId = props.navigation.getParam("mealId");
+  const mealId = props.route.params.mealId;
   const currentMealIsFavorite = useSelector((state) =>
     state.meals.favoriteMeals.some((meal) => meal.id === mealId)
   );
@@ -56,15 +56,15 @@ const MealDetailScreen = (props) => {
   );
 };
 
-MealDetailScreen.navigationOptions = (navigationData) => {
+export const screenOptions = (navData) => {
   // const mealId = navigationData.navigation.getParam('mealId');
-  const mealTitle = navigationData.navigation.getParam("mealTitle");
-  const toggleFavorite = navigationData.navigation.getParam("toggleFav");
-  const isFavorite = navigationData.navigation.getParam("isFav");
+  const mealTitle = navData.route.params.mealTitle;
+  const toggleFavorite = navData.route.params.toggleFav;
+  const isFavorite = navData.route.params.isFav;
   // const selectedMeal = MEALS.find(meal => meal.id === mealId);
   return {
     headerTitle: mealTitle,
-    headerRight: (
+    headerRight: () => (
       <HeaderButtons HeaderButtonComponent={HeaderButton}>
         <Item
           title="Favorite"

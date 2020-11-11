@@ -6,13 +6,15 @@ import { enableScreens } from "react-native-screens";
 import { createStore, combineReducers } from "redux";
 import { Provider } from "react-redux";
 
-import MealsNavigator from "./navigation/MealsNavigator";
+import AppNavigator from "./navigation/AppNavigator";
 import mealsReducer from "./store/reducers/meals";
+import authReducer from "./store/reducers/auth";
 
 enableScreens();
 
 const rootReducer = combineReducers({
   meals: mealsReducer,
+  auth: authReducer,
 });
 
 const store = createStore(rootReducer);
@@ -38,7 +40,7 @@ export default function App() {
 
   return (
     <Provider store={store}>
-      <MealsNavigator />
+      <AppNavigator />
     </Provider>
   );
 }
