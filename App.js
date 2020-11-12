@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { Text, View } from "react-native";
 import * as Font from "expo-font";
+import thunk from "redux-thunk";
+
 import { AppLoading } from "expo";
 import { enableScreens } from "react-native-screens";
 import { createStore, combineReducers, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
-import thunk from "redux-thunk";
+import { composeWithDevTools } from "redux-devtools-extension";
 
 import AppNavigator from "./navigation/AppNavigator";
 import mealsReducer from "./store/reducers/meals";
@@ -18,7 +20,10 @@ const rootReducer = combineReducers({
   auth: authReducer,
 });
 
-const store = createStore(rootReducer, applyMiddleware(thunk));
+const store = createStore(
+  rootReducer,
+  composeWithDevTools(applyMiddleware(thunk))
+);
 
 const fetchFonts = () => {
   return Font.loadAsync({

@@ -74,7 +74,7 @@ export const signup = (
 
 export const login = (email, password) => {
   return async (dispatch) => {
-    const response = await fetch(`${path}/api/auth/user-new`, {
+    const response = await fetch(`${path}/api/auth/user-login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -93,6 +93,7 @@ export const login = (email, password) => {
     }
 
     const resData = await response.json();
+    console.log(resData);
     dispatch(
       authenticate(
         resData.localId,

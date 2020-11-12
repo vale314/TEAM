@@ -32,7 +32,8 @@ import Colors from "../constants/Colors";
 import AuthScreen, {
   screenOptions as AuthScreenOptions,
 } from "../screens/AuthScreen";
-import { color } from "react-native-reanimated";
+
+import { logout } from "../store/actions/auth";
 
 const defaultStackNavOptions = {
   headerTitleStyle: {
@@ -164,7 +165,7 @@ export const MainNavigator = () => {
                 title="Logout"
                 color={Colors.primary}
                 onPress={() => {
-                  dispatch(authActions.logout());
+                  dispatch(logout());
                   // props.navigation.navigate('Auth');
                 }}
               />

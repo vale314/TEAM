@@ -93,7 +93,7 @@ const AuthScreen = (props) => {
     setIsLoading(true);
     try {
       await dispatch(action);
-      props.navigation.navigate("CategoryMeals");
+      //props.navigation.navigate("CategoryMeals");
     } catch (err) {
       setError(err.message);
       setIsLoading(false);
