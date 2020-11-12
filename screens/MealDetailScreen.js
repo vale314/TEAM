@@ -59,7 +59,10 @@ const MealDetailScreen = (props) => {
 export const screenOptions = (navData) => {
   // const mealId = navigationData.navigation.getParam('mealId');
   const mealTitle = navData.route.params.mealTitle;
-  const toggleFavorite = navData.route.params.toggleFav;
+  const toggleFavorite =
+    navData.route.params.toggleFav !== undefined
+      ? navData.route.params.toggleFav
+      : null;
   const isFavorite = navData.route.params.isFav;
   // const selectedMeal = MEALS.find(meal => meal.id === mealId);
   return {

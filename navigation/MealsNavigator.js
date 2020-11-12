@@ -43,9 +43,6 @@ const defaultStackNavOptions = {
   },
   headerTintColor: Colors.primaryColor,
 
-  headerStyle: {
-    fontFamily: "open-sans-bold",
-  },
   headerTitleStyle: {
     fontFamily: "open-sans-bold",
   },

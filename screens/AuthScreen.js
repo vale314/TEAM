@@ -7,6 +7,7 @@ import {
   Button,
   ActivityIndicator,
   Alert,
+  Text,
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { useDispatch } from "react-redux";
@@ -50,11 +51,16 @@ const AuthScreen = (props) => {
   const [formState, dispatchFormState] = useReducer(formReducer, {
     inputValues: {
       email: "",
-      password: "",
+      user_password: "",
+      firstname: "",
+      lastname: "",
+      code: "",
+      image: "",
+      cellphone: "",
     },
     inputValidities: {
       email: false,
-      password: false,
+      user_password: false,
     },
     formIsValid: false,
   });
@@ -70,19 +76,24 @@ const AuthScreen = (props) => {
     if (isSignup) {
       action = authActions.signup(
         formState.inputValues.email,
-        formState.inputValues.password
+        formState.inputValues.user_password,
+        formState.inputValues.firstname,
+        formState.inputValues.lastname,
+        formState.inputValues.code,
+        formState.inputValues.image,
+        formState.inputValues.cellphone
       );
     } else {
       action = authActions.login(
         formState.inputValues.email,
-        formState.inputValues.password
+        formState.inputValues.user_password
       );
     }
     setError(null);
     setIsLoading(true);
     try {
       await dispatch(action);
-      // props.navigation.navigate('Shop');
+      props.navigation.navigate("CategoryMeals");
     } catch (err) {
       setError(err.message);
       setIsLoading(false);
@@ -110,6 +121,62 @@ const AuthScreen = (props) => {
       <LinearGradient colors={["#ffedff", "#ffe3ff"]} style={styles.gradient}>
         <Card style={styles.authContainer}>
           <ScrollView>
+            {isSignup ? (
+              <View>
+                <Input
+                  id="firstname"
+                  label="Nombre"
+                  keyboardType="default"
+                  required
+                  autoCapitalize="none"
+                  errorText="Porfavor ingrese Su Nombre"
+                  onInputChange={inputChangeHandler}
+                  initialValue=""
+                />
+                <Input
+                  id="lastname"
+                  label="Apellido"
+                  keyboardType="default"
+                  required
+                  autoCapitalize="none"
+                  errorText="Porfavor ingrese Su Apellido"
+                  onInputChange={inputChangeHandler}
+                  initialValue=""
+                />
+                <Input
+                  id="code"
+                  label="Codigo"
+                  keyboardType="default"
+                  required
+                  autoCapitalize="none"
+                  errorText="Porfavor ingrese Su Codigo"
+                  onInputChange={inputChangeHandler}
+                  initialValue=""
+                />
+                <Input
+                  id="image"
+                  label="Image"
+                  keyboardType="default"
+                  required
+                  autoCapitalize="none"
+                  errorText="Porfavor ingrese Su Imagen"
+                  onInputChange={inputChangeHandler}
+                  initialValue=""
+                />
+                <Input
+                  id="cellphone"
+                  label="Numero De Celular"
+                  keyboardType="phone-pad"
+                  required
+                  autoCapitalize="none"
+                  errorText="Porfavor ingrese Su Numero"
+                  onInputChange={inputChangeHandler}
+                  initialValue=""
+                />
+              </View>
+            ) : (
+              <View></View>
+            )}
             <Input
               id="email"
               label="E-Mail"
@@ -122,7 +189,7 @@ const AuthScreen = (props) => {
               initialValue=""
             />
             <Input
-              id="password"
+              id="user_password"
               label="Password"
               keyboardType="default"
               secureTextEntry
@@ -133,6 +200,7 @@ const AuthScreen = (props) => {
               onInputChange={inputChangeHandler}
               initialValue=""
             />
+
             <View style={styles.buttonContainer}>
               {isLoading ? (
                 <ActivityIndicator size="small" color={Colors.primary} />
@@ -179,7 +247,7 @@ const styles = StyleSheet.create({
   authContainer: {
     width: "80%",
     maxWidth: 400,
-    maxHeight: 400,
+    maxHeight: 600,
     padding: 20,
   },
   buttonContainer: {

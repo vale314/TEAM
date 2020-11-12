@@ -42,17 +42,16 @@ const FiltersScreen = (props) => {
     dispatch(setFilters(appliedFilters));
   }, [isGlutenFree, isLactoseFree, isVegan, isVegetarian, dispatch]);
 
+  var save = null;
+  if (props.route.params !== undefined)
+    save =
+      props.route.params.save !== undefined ? props.route.params.save : null;
+
   props.navigation.setOptions({
     headerTitle: "Config",
     headerRight: () => (
       <HeaderButtons HeaderButtonComponent={HeaderButton}>
-        <Item
-          title="Save"
-          iconName="ios-save"
-          onPress={
-            props.route.params !== undefined ? props.route.params.save : null
-          }
-        />
+        <Item title="Save" iconName="ios-save" onPress={save} />
       </HeaderButtons>
     ),
   });
