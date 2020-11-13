@@ -8,6 +8,8 @@ export const SET_DID_TRY_AL = "SET_DID_TRY_AL";
 
 import CONFIG from "../../config";
 
+import { alert } from "./alert";
+
 const path =
   process.env.NODE_ENV == "development" ? CONFIG.development : CONFIG.deploy;
 
@@ -31,7 +33,8 @@ export const signup = (
   firstname,
   lastname,
   code,
-  image
+  image,
+  abort
 ) => {
   return async (dispatch) => {
     const response = await fetch(`${path}/api/auth/user-new`, {
@@ -50,23 +53,20 @@ export const signup = (
       }),
     });
 
-    if (response.error) {
-      const errorResData = await response.json();
+    const resData = await response.json();
 
-      const error = errorResData.err;
+    if (resData.error) {
+      const error = resData.msg;
       // Dispatch error
+
+      return alert("Hay Un Error", error);
     }
 
-    const resData = await response.json();
     dispatch(
-      authenticate(
-        resData.localId,
-        resData.token,
-        parseInt(resData.expiresIn) * 1000
-      )
+      authenticate(resData.localId, resData.token, parseInt(resData.expires))
     );
     const expirationDate = new Date(
-      new Date().getTime() + parseInt(resData.expiresIn) * 1000
+      new Date().getTime() + parseInt(resData.expires)
     );
     saveDataToStorage(resData.token, resData.localId, expirationDate);
   };
@@ -85,27 +85,18 @@ export const login = (email, password) => {
       }),
     });
 
-    if (response.error) {
-      const errorResData = await response.json();
-
-      const error = errorResData.err;
-      // Dispatch error
-    }
-
     const resData = await response.json();
-    console.log(resData);
+
+    if (resData.error) {
+      const error = resData.msg;
+
+      return alert("Hay Un Error", error);
+    }
     dispatch(
-      authenticate(
-        resData.localId,
-        resData.token,
-        // parseInt(resData.expiresIn) * 1000
-        parseInt(new Date().getTime() + 10000) * 1000
-      )
+      authenticate(resData.localId, resData.token, parseInt(resData.expires))
     );
     const expirationDate = new Date(
-      // new Date().getTime() + parseInt(resData.expiresIn) * 1000
-      new Date().getTime() +
-        parseInt(parseInt(new Date().getTime() + 10000)) * 1000
+      new Date().getTime() + parseInt(resData.expires)
     );
     saveDataToStorage(resData.token, resData.localId, expirationDate);
   };
