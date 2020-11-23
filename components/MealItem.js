@@ -16,7 +16,7 @@ const MealItem = (props) => {
         <View>
           <View style={{ ...styles.mealRow, ...styles.mealHeader }}>
             <ImageBackground
-              source={{ uri: props.image }}
+              source={{ uri: `data:image/gif;base64,${props.image}` }}
               style={styles.bgImage}
             >
               <View style={styles.titleContainer}>

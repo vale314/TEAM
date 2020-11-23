@@ -29,12 +29,11 @@ export const authenticate = (userId = "", token, expiryTime) => {
 export const signup = (
   email,
   password,
-  cellphone,
   firstname,
   lastname,
   code,
   image,
-  abort
+  cellphone
 ) => {
   return async (dispatch) => {
     const response = await fetch(`${path}/api/auth/user-new`, {

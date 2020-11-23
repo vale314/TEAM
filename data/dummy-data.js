@@ -2,16 +2,14 @@ import Category from "../models/category";
 import Meal from "../models/meal";
 
 export const CATEGORIES = [
-  new Category("c1", "Italian", "#f5428d"),
-  new Category("c2", "Quick & Easy", "#f54242"),
-  new Category("c3", "Hamburgers", "#f5a442"),
-  new Category("c4", "German", "#f5d142"),
-  new Category("c5", "Light & Lovely", "#368dff"),
-  new Category("c6", "Exotic", "#41d95d"),
-  new Category("c7", "Breakfast", "#9eecff"),
-  new Category("c8", "Asian", "#b9ffb0"),
-  new Category("c9", "French", "#ffc7ff"),
-  new Category("c10", "Summer", "#47fced"),
+  new Category("c1", "Desayuno", "#f5428d"),
+  new Category("c2", "Comida", "#f54242"),
+  new Category("c3", "Snack", "#f5a442"),
+  new Category("c4", "Lonche", "#f5d142"),
+  new Category("c5", "Sandiwch", "#368dff"),
+  new Category("c6", "Taco", "#41d95d"),
+  new Category("c7", "Pan", "#9eecff"),
+  new Category("c8", "Dulce", "#b9ffb0"),
 ];
 
 export const MEALS = [
@@ -114,7 +112,7 @@ export const MEALS = [
 
   new Meal(
     "m5",
-    ["c2", "c5", "c10"],
+    ["c2", "c5", "c8"],
     "Salad with Smoked Salmon",
     "Normal",
     "https://cdn.pixabay.com/photo/2016/10/25/13/29/smoked-salmon-salad-1768890_1280.jpg",
@@ -141,7 +139,7 @@ export const MEALS = [
 
   new Meal(
     "m6",
-    ["c6", "c10"],
+    ["c6", "c7"],
     "Delicious Orange Mousse",
     "Cheap",
     "https://cdn.pixabay.com/photo/2017/05/01/05/18/pastry-2274750_1280.jpg",
@@ -244,7 +242,7 @@ export const MEALS = [
   ),
   new Meal(
     "m10",
-    ["c2", "c5", "c10"],
+    ["c2", "c5", "c8"],
     "Asparagus Salad with Cherry Tomatoes",
     "Normal",
     "https://cdn.pixabay.com/photo/2018/04/09/18/26/asparagus-3304997_1280.jpg",

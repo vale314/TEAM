@@ -41,7 +41,10 @@ const MealDetailScreen = (props) => {
 
   return (
     <ScrollView>
-      <Image source={{ uri: selectedMeal.imageUrl }} style={styles.image} />
+      <Image
+        source={{ uri: `data:image/gif;base64,${selectedMeal.imageUrl}` }}
+        style={styles.image}
+      />
       <View style={styles.details}>
         <DefaultText>$ {selectedMeal.precio}</DefaultText>
         <DefaultText>{selectedMeal.estandar.toUpperCase()}</DefaultText>

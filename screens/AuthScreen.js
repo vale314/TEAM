@@ -7,7 +7,6 @@ import {
   Button,
   ActivityIndicator,
   Alert,
-  Text,
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { useDispatch } from "react-redux";
