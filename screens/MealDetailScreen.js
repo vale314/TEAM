@@ -1,11 +1,27 @@
-import React, { useEffect, useCallback } from "react";
-import { ScrollView, View, Image, Text, StyleSheet } from "react-native";
+import React, { useEffect, useCallback, useState } from "react";
+import {
+  ScrollView,
+  View,
+  Image,
+  Text,
+  StyleSheet,
+  Button,
+  Linking,
+  ActivityIndicator,
+} from "react-native";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
 import { useSelector, useDispatch } from "react-redux";
 
 import HeaderButton from "../components/HeaderButton";
 import DefaultText from "../components/DefaultText";
 import { toggleFavorite } from "../store/actions/meals";
+import ButtonFloat from "../components/ButtonFloat";
+import Colors from "../constants/Colors";
+import { alert } from "../store/actions/alert";
+import config from "../config";
+
+const path =
+  process.env.NODE_ENV == "development" ? config.development : CONFIG.deploy;
 
 const ListItem = (props) => {
   return (
@@ -16,7 +32,11 @@ const ListItem = (props) => {
 };
 
 const MealDetailScreen = (props) => {
+  const [isLoading, setIsLoading] = useState(false);
+
   const availableMeals = useSelector((state) => state.meals.meals);
+  const userId = useSelector((state) => state.auth.userId);
+
   const mealId = props.route.params.mealId;
   const currentMealIsFavorite = useSelector((state) =>
     state.meals.favoriteMeals.some((meal) => meal.id === mealId)
@@ -39,6 +59,40 @@ const MealDetailScreen = (props) => {
     props.navigation.setParams({ isFav: currentMealIsFavorite });
   }, [currentMealIsFavorite]);
 
+  const buyItem = async () => {
+    setIsLoading(true);
+    const response = await fetch(`${path}/api/users/buy-products`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: userId,
+        id: mealId,
+      }),
+    });
+
+    const resData = await response.json();
+
+    if (resData.error) {
+      const error = resData.msg;
+
+      setIsLoading(false);
+      return alert("Error", error);
+    }
+
+    Linking.openURL("http://api.whatsapp.com/send?phone=523328433656");
+    setIsLoading(false);
+  };
+
+  if (isLoading) {
+    return (
+      <View style={styles.centered}>
+        <ActivityIndicator size="large" color={Colors.primary} />
+      </View>
+    );
+  }
+
   return (
     <ScrollView>
       <Image
@@ -47,6 +101,7 @@ const MealDetailScreen = (props) => {
       />
       <View style={styles.details}>
         <DefaultText>$ {selectedMeal.precio}</DefaultText>
+        <Button title={"Comprar"} color={Colors.primary} onPress={buyItem} />
         <DefaultText>{selectedMeal.estandar.toUpperCase()}</DefaultText>
       </View>
       <Text style={styles.title}>Ingredientes</Text>

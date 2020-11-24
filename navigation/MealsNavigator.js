@@ -34,6 +34,9 @@ import AuthScreen, {
 } from "../screens/AuthScreen";
 
 import { logout } from "../store/actions/auth";
+import BuysScreen, {
+  screenOptions as BuyScreenOptions,
+} from "../screens/BuysScreen";
 
 const defaultStackNavOptions = {
   headerTitleStyle: {
@@ -73,6 +76,25 @@ export const MealsNavigator = () => {
   );
 };
 
+const BuysStackNavigator = createStackNavigator();
+
+export const BuysNavigator = () => {
+  return (
+    <BuysStackNavigator.Navigator screenOptions={defaultStackNavOptions}>
+      <BuysStackNavigator.Screen
+        name="Buy"
+        component={BuysScreen}
+        options={BuyScreenOptions}
+      />
+      <BuysStackNavigator.Screen
+        name="MealDetail"
+        component={MealDetailScreen}
+        options={MealDetailScreenOptions}
+      />
+    </BuysStackNavigator.Navigator>
+  );
+};
+
 const AuthStackNavigator = createStackNavigator();
 
 export const AuthNavigator = () => {
@@ -103,6 +125,28 @@ export const FavNavigator = () => {
         options={MealDetailScreenOptions}
       />
     </FavStackNavigator.Navigator>
+  );
+};
+
+const BuyStackNavigator = createBottomTabNavigator();
+
+export const BuyNavigator = () => {
+  return (
+    <BuyStackNavigator.Navigator>
+      <BuyStackNavigator.Screen
+        name="Buys"
+        component={BuysNavigator}
+        options={{
+          tabBarIcon: (tabInfo) => (
+            <Ionicons
+              name="ios-restaurant"
+              size={25}
+              color={Colors.accentColor}
+            />
+          ),
+        }}
+      />
+    </BuyStackNavigator.Navigator>
   );
 };
 
@@ -215,6 +259,24 @@ export const MainNavigator = () => {
               color={props.color}
             />
           ),
+        }}
+      />
+
+      <MainDrawerNavigator.Screen
+        name="Compras"
+        component={BuyNavigator}
+        options={{
+          title: "Categorias",
+          drawerIcon: (props) => (
+            <Item
+              title="Menu"
+              iconName="ios-menu"
+              onPress={() => {
+                navData.navigation.toggleDrawer();
+              }}
+            />
+          ),
+          drawerLabel: "Compras",
         }}
       />
     </MainDrawerNavigator.Navigator>

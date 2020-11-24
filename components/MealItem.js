@@ -11,7 +11,7 @@ import DefaultText from "./DefaultText";
 
 const MealItem = (props) => {
   return (
-    <View style={styles.mealItem}>
+    <View style={styles.mealItem} key={props.key}>
       <TouchableOpacity onPress={props.onSelectMeal}>
         <View>
           <View style={{ ...styles.mealRow, ...styles.mealHeader }}>
@@ -28,7 +28,7 @@ const MealItem = (props) => {
           </View>
           <View style={{ ...styles.mealRow, ...styles.mealDetail }}>
             <DefaultText>$ {props.precio} </DefaultText>
-            <DefaultText>{props.estandar.toUpperCase()}</DefaultText>
+            <DefaultText>{props.estandar}</DefaultText>
           </View>
         </View>
       </TouchableOpacity>

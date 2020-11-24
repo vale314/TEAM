@@ -2,7 +2,7 @@ import { AUTHENTICATE, LOGOUT, SET_DID_TRY_AL } from "../actions/auth";
 
 const initialState = {
   token: null,
-  userId: null,
+  userId: "user@hotmail.com",
   didTryAutoLogin: false,
 };
 
