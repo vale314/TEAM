@@ -80,8 +80,9 @@ const MealDetailScreen = (props) => {
       setIsLoading(false);
       return alert("Error", error);
     }
-
-    Linking.openURL("http://api.whatsapp.com/send?phone=523328433656");
+    Linking.openURL(
+      `http://api.whatsapp.com/send?phone=+52${selectedMeal.cellphone}`
+    );
     setIsLoading(false);
   };
 

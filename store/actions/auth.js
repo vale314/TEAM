@@ -32,7 +32,6 @@ export const signup = (
   firstname,
   lastname,
   code,
-  image,
   cellphone
 ) => {
   return async (dispatch) => {
@@ -48,7 +47,7 @@ export const signup = (
         lastname: lastname,
         cellphone: cellphone,
         code: code,
-        image: image,
+        image: "user",
       }),
     });
 

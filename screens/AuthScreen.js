@@ -54,7 +54,6 @@ const AuthScreen = (props) => {
       firstname: "",
       lastname: "",
       code: "",
-      image: "",
       cellphone: "",
     },
     inputValidities: {
@@ -79,7 +78,6 @@ const AuthScreen = (props) => {
         formState.inputValues.firstname,
         formState.inputValues.lastname,
         formState.inputValues.code,
-        formState.inputValues.image,
         formState.inputValues.cellphone
       );
     } else {
@@ -152,7 +150,7 @@ const AuthScreen = (props) => {
                   onInputChange={inputChangeHandler}
                   initialValue=""
                 />
-                <Input
+                {/* <Input
                   id="image"
                   label="Image"
                   keyboardType="default"
@@ -161,7 +159,7 @@ const AuthScreen = (props) => {
                   errorText="Porfavor ingrese Su Imagen"
                   onInputChange={inputChangeHandler}
                   initialValue=""
-                />
+                /> */}
                 <Input
                   id="cellphone"
                   label="Numero De Celular"

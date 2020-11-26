@@ -67,7 +67,8 @@ export const fetchProducts = () => {
           i.glutenFree,
           i.vegan,
           i.vegetarian,
-          i.lactosaFree
+          i.lactosaFree,
+          i.cellphone
         )
       );
     });

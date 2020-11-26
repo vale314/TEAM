@@ -1,4 +1,4 @@
 export default {
-  development: "http://localhost:5000",
-  deploy: "https://xxxx.com",
+  development: "https://cucei-eats.herokuapp.com",
+  deploy: "https://cucei-eats.herokuapp.com",
 };
