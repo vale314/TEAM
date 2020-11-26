@@ -48,7 +48,7 @@ const FiltersScreen = (props) => {
       props.route.params.save !== undefined ? props.route.params.save : null;
 
   props.navigation.setOptions({
-    headerTitle: "Config",
+    headerTitle: "Configuración",
     headerRight: () => (
       <HeaderButtons HeaderButtonComponent={HeaderButton}>
         <Item title="Save" iconName="ios-save" onPress={save} />
@@ -62,24 +62,24 @@ const FiltersScreen = (props) => {
 
   return (
     <View style={styles.screen}>
-      <Text style={styles.title}>Available Filters / Restrictions</Text>
+      <Text style={styles.title}>Disponibles Filtros</Text>
       <FilterSwitch
-        label="Gluten-free"
+        label="Gluten Free"
         state={isGlutenFree}
         onChange={(newValue) => setIsGlutenFree(newValue)}
       />
       <FilterSwitch
-        label="Lactose-free"
+        label="Lactose Free"
         state={isLactoseFree}
         onChange={(newValue) => setIsLactoseFree(newValue)}
       />
       <FilterSwitch
-        label="Vegan"
+        label="Vegano"
         state={isVegan}
         onChange={(newValue) => setIsVegan(newValue)}
       />
       <FilterSwitch
-        label="Vegetarian"
+        label="Vegetariano"
         state={isVegetarian}
         onChange={(newValue) => setIsVegetarian(newValue)}
       />

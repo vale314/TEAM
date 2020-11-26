@@ -35,6 +35,10 @@ export const signup = (
   cellphone
 ) => {
   return async (dispatch) => {
+    if (!email.includes("udg.mx")) {
+      return alert("UDG Solamente", "Correo No Es Universitario");
+    }
+
     const response = await fetch(`${path}/api/auth/user-new`, {
       method: "POST",
       headers: {
@@ -72,6 +76,10 @@ export const signup = (
 
 export const login = (email, password) => {
   return async (dispatch) => {
+    if (!email.includes("udg.mx")) {
+      return alert("UDG Solamente", "Correo No Es Universitario");
+    }
+
     const response = await fetch(`${path}/api/auth/user-login`, {
       method: "POST",
       headers: {

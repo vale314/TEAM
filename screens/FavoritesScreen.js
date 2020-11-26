@@ -13,7 +13,7 @@ const FavoritesScreen = (props) => {
   if (favMeals.length === 0 || !favMeals) {
     return (
       <View style={styles.content}>
-        <DefaultText>No favorite meals found. Start adding some!</DefaultText>
+        <DefaultText> 🤭 </DefaultText>
       </View>
     );
   }
@@ -23,7 +23,7 @@ const FavoritesScreen = (props) => {
 
 export const screenOptions = (navData) => {
   return {
-    headerTitle: "Your Favorites",
+    headerTitle: "Tus Favoritos",
     headerLeft: () => (
       <HeaderButtons HeaderButtonComponent={HeaderButton}>
         <Item

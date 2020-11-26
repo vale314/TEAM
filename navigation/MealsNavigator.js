@@ -63,7 +63,7 @@ export const MealsNavigator = () => {
         options={CategoriesScreenOptions}
       />
       <MealsStackNavigator.Screen
-        name="CategoryMeals"
+        name="Categoria Comida"
         component={CategoryMealsScreen}
         options={CategoryMealsScreenOptions}
       />
@@ -132,19 +132,11 @@ const BuyStackNavigator = createBottomTabNavigator();
 
 export const BuyNavigator = () => {
   return (
-    <BuyStackNavigator.Navigator>
+    <BuyStackNavigator.Navigator screenOptions={defaultStackNavOptions}>
       <BuyStackNavigator.Screen
         name="Buys"
         component={BuysNavigator}
-        options={{
-          tabBarIcon: (tabInfo) => (
-            <Ionicons
-              name="ios-restaurant"
-              size={25}
-              color={Colors.accentColor}
-            />
-          ),
-        }}
+        options={BuyScreenOptions}
       />
     </BuyStackNavigator.Navigator>
   );
@@ -156,12 +148,12 @@ const MealsFavTabNavigator = () => {
   return (
     <MealsBottonNavigator.Navigator>
       <MealsBottonNavigator.Screen
-        name="Meals"
+        name="Comdias"
         component={MealsNavigator}
         options={{
           tabBarIcon: (tabInfo) => (
             <Ionicons
-              name="ios-restaurant"
+              name="md-restaurant"
               size={25}
               color={Colors.accentColor}
             />
@@ -226,25 +218,20 @@ export const MainNavigator = () => {
           drawerIcon: (props) => (
             <Item
               title="Menu"
-              iconName="ios-menu"
+              iconName="md-menu"
               onPress={() => {
                 navData.navigation.toggleDrawer();
               }}
             />
           ),
-          drawerLabel: "Meals",
         }}
       />
       <MainDrawerNavigator.Screen
-        name="Filter"
+        name="Filtro"
         component={FiltersNavigator}
         options={{
           drawerIcon: (props) => (
-            <Ionicons
-              name={Platform.OS === "android" ? "md-cart" : "ios-cart"}
-              size={23}
-              color={props.color}
-            />
+            <Ionicons name={"md-barcode"} size={23} color={props.color} />
           ),
         }}
       />
@@ -253,11 +240,7 @@ export const MainNavigator = () => {
         component={FavNavigator}
         options={{
           drawerIcon: (props) => (
-            <Ionicons
-              name={Platform.OS === "android" ? "md-cart" : "ios-cart"}
-              size={23}
-              color={props.color}
-            />
+            <Ionicons name={"md-star-outline"} size={23} color={props.color} />
           ),
         }}
       />
@@ -266,17 +249,9 @@ export const MainNavigator = () => {
         name="Compras"
         component={BuyNavigator}
         options={{
-          title: "Categorias",
           drawerIcon: (props) => (
-            <Item
-              title="Menu"
-              iconName="ios-menu"
-              onPress={() => {
-                navData.navigation.toggleDrawer();
-              }}
-            />
+            <Ionicons name={"md-cart"} size={23} color={props.color} />
           ),
-          drawerLabel: "Compras",
         }}
       />
     </MainDrawerNavigator.Navigator>

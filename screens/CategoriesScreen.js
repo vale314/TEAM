@@ -82,7 +82,7 @@ const CategoriesScreen = (props) => {
   if (!isLoading && userProducts.length === 0) {
     return (
       <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-        <Text>No products found, maybe start creating some?</Text>
+        <Text>No Hay Productos, Sorry!</Text>
       </View>
     );
   }
@@ -93,7 +93,7 @@ const CategoriesScreen = (props) => {
         title={itemData.item.title}
         color={itemData.item.color}
         onSelect={() => {
-          props.navigation.navigate("CategoryMeals", {
+          props.navigation.navigate("Categoria Comida", {
             categoryId: itemData.item.id,
           });
         }}
