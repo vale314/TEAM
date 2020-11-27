@@ -5,7 +5,7 @@ export const SET_PRODUCTS = "SET_PRODUCTS";
 export const SET_PRODUCTS_MEALS = "SET_PRODUCTS_MEALS";
 export const SET_FILTERS = "SET_FILTERS";
 
-import CONFIG from "../../config";
+import CONFIG from "https://cucei-eats.herokuapp.com";
 import Meal from "../../models/meal";
 
 const path =

@@ -15,13 +15,11 @@ import { useSelector, useDispatch } from "react-redux";
 import HeaderButton from "../components/HeaderButton";
 import DefaultText from "../components/DefaultText";
 import { toggleFavorite } from "../store/actions/meals";
-import ButtonFloat from "../components/ButtonFloat";
+
 import Colors from "../constants/Colors";
 import { alert } from "../store/actions/alert";
-import config from "../config";
 
-const path =
-  process.env.NODE_ENV == "development" ? config.development : CONFIG.deploy;
+const path = "https://cucei-eats.herokuapp.com";
 
 const ListItem = (props) => {
   return (

@@ -6,7 +6,7 @@ export const AUTHENTICATE = "AUTHENTICATE";
 export const LOGOUT = "LOGOUT";
 export const SET_DID_TRY_AL = "SET_DID_TRY_AL";
 
-import CONFIG from "../../config";
+import CONFIG from "https://cucei-eats.herokuapp.com";
 
 import { alert } from "./alert";
 

@@ -1,16 +1,9 @@
-import React, {
-  useState,
-  useEffect,
-  useReducer,
-  useCallback,
-  Fragment,
-} from "react";
+import React, { useState, useEffect, useReducer, useCallback } from "react";
 import {
   ScrollView,
   View,
   KeyboardAvoidingView,
   StyleSheet,
-  Button,
   ActivityIndicator,
   Alert,
   Dimensions,

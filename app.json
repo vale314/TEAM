@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "UDG-EATS",
+    "name": "UDGEATS",
     "slug": "rn-complete-guide",
     "privacy": "public",
     "platforms": ["ios", "android", "web"],
@@ -17,11 +17,11 @@
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
-      "bundleIdentifier": "com.sg-host.valentinalejandro6",
+      "bundleIdentifier": "com.sghost.valentinalejandro6",
       "buildNumber": "1.0.0"
     },
     "android": {
-      "package": "com.sg-host.valentinalejandro6",
+      "package": "com.sghost.valentinalejandro6",
       "versionCode": 1
     }
   }
