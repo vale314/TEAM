@@ -1,9 +1,6 @@
 export const SET_BUYS = "SET_BUYS";
 
-import CONFIG from "https://cucei-eats.herokuapp.com";
-
-const path =
-  process.env.NODE_ENV == "development" ? CONFIG.development : CONFIG.deploy;
+const path = "https://cucei-eats.herokuapp.com";
 
 export const fetchBuys = (email) => {
   return async (dispatch) => {
