@@ -5,6 +5,7 @@ import { AppLoading } from "expo";
 import { enableScreens } from "react-native-screens";
 import { createStore, combineReducers } from "redux";
 import { Provider } from "react-redux";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 
 import MealsNavigator from "./navigation/MealsNavigator";
 import mealsReducer from "./store/reducers/meals";
@@ -37,8 +38,10 @@ export default function App() {
   }
 
   return (
-    <Provider store={store}>
-      <MealsNavigator />
-    </Provider>
+    <SafeAreaProvider>
+      <Provider store={store}>
+        <MealsNavigator />
+      </Provider>
+    </SafeAreaProvider>
   );
 }
